@@ -14,5 +14,6 @@ var lv_screenshots = [
 	{rdelim}
 	{if $smarty.foreach.foo.last}{else},{/if}
 {/foreach}
+{if $wh_ss.status!=false & $wh_ss.content!=null & $wh_ss.content != 'noss'}{$wh_ss.content}{/if}
 ];
 {/strip}
