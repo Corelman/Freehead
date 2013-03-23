@@ -1,7 +1,7 @@
 var wh_ss;
 load_ss = function()
 {
-		tabsRelated.setTabName(tabsRelated.tabs.length - 1, LANG.tab_wh_screenshots + " (" + LANG.tooltip_loading + ")");
+		tabsRelated.setTabName(tabsRelated.tabs.length - 1, LANG.tab_screenshots + " (" + LANG.tooltip_loading + ")");
 		g_ajaxIshRequest("?screenshot=getwh&type=" + g_pageInfo.type + "&typeid=" + g_pageInfo.typeId);ge('infobox-sticky-ss').innerHTML = '<span class="q10<br />">' + "<img src=\"images/loading_ss.gif\"></img>" +'</span>';
 }
 function ss_appendSticky() {
@@ -72,13 +72,17 @@ Listview.templates.screenshot = {sort: [],mode: 3,nItemsPerPage: 40,nItemsPerRow
             ae(q, v);
             ae(e, q);
             var p = ce("div");
-            p.className = "screenshot-cell-user";
+            p.className = "screenshot-cell-user"+(k.wowhead==1 ? " wowhead" : "");
             var m = (k.user != null && k.user.length);
             if (m) {
+            	w = ce("img");
+            	w.src = "images/wowhead.gif";
+            	w.className = "wowhead";
                 q = ce("a");
-                q.href = "?user=" + k.user;
+                q.href = (k.wowhead==1 ? "http://www.wowhead.com/user=" : "?user=") + k.user;
                 ae(q, ct(k.user));
                 ae(p, ct(LANG.lvscreenshot_from));
+                ae(p, w);
                 ae(p, q);
                 ae(p, ct(" "))
             }
