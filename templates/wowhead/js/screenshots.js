@@ -20,7 +20,7 @@ function ss_appendSticky() {
             return rf2(a)
         };
         var f = ce("img"), e = Math.min(150 / c.width, 150 / c.height);
-        f.src = (c.wowhead==1 ? "http://static.wowhead.com/uploads/screenshots/thumb/" : "images/screenshots/thumb/") + c.id + ".jpg";
+        f.src = (c.wowhead==1 ? "http://static.wowhead.com/uploads/screenshots/thumb/" + c.id + ".jpg" : "images/screenshots/thumb/" + c.body.replace("gif","jpg").replace("png","jpg"));
         f.className = "border";
         ae(l, f);
         ae(m, l);
@@ -68,22 +68,26 @@ Listview.templates.screenshot = {sort: [],mode: 3,nItemsPerPage: 40,nItemsPerRow
             q.href = "#screenshots:id=" + k.id;
             q.onclick = rf2;
             var v = ce("img"), t = Math.min(150 / k.width, 150 / k.height);
-            v.src = (k.wowhead==1 ? "http://static.wowhead.com/uploads/screenshots/thumb/" : "images/screenshots/thumb/") + k.id + ".jpg";
+            v.src = (k.wowhead==1 ? "http://static.wowhead.com/uploads/screenshots/thumb/" + k.id + ".jpg" : "images/screenshots/thumb/" + k.body.replace("gif","jpg").replace("png","jpg"));
             ae(q, v);
             ae(e, q);
             var p = ce("div");
             p.className = "screenshot-cell-user"+(k.wowhead==1 ? " wowhead" : "");
             var m = (k.user != null && k.user.length);
             if (m) {
-            	w = ce("img");
-            	w.src = "images/wowhead.gif";
-            	w.className = "wowhead";
                 q = ce("a");
                 q.href = (k.wowhead==1 ? "http://www.wowhead.com/user=" : "?user=") + k.user;
                 ae(q, ct(k.user));
                 ae(p, ct(LANG.lvscreenshot_from));
-                ae(p, w);
+                if(k.wowhead==1){
+            		w = ce("img");
+            		w.src = "images/wowhead.gif";
+            		w.style.margin = "0";
+            		w.style.border = "0";
+            		ae(p, w);
+            	}
                 ae(p, q);
+                
                 ae(p, ct(" "))
             }
             var j = ce("span");
@@ -227,7 +231,7 @@ function() {
         b.style.visibility = "hidden";
         var C = z[k], I = (C.width > 772 || C.height > 618);
         g(0);
-        var E = (C.url ? C.url: (C.wowhead==1 ? "http://static.wowhead.com/uploads/screenshots/" : "images/screenshots/") + (I ? "resized/": "normal/") + C.id + ".jpg");
+        var E = (C.url ? C.url: (C.wowhead==1 ? "http://static.wowhead.com/uploads/screenshots/" : "images/screenshots/") + (I ? "resized/": "normal/") + (C.wowhead==1  ? C.id + ".jpg" : C.body.replace("gif","jpg").replace("png","jpg")));
         var J = '<img src="' + E + '" width="' + e + '" height="' + y + '"';
         if (Browser.ie6) {
             J += ' galleryimg="no"'
@@ -238,7 +242,7 @@ function() {
             if (C.url) {
                 h.href = E
             } else {
-                h.href = (C.wowhead==1 ? "http://static.wowhead.com/uploads/screenshots/normal/" : "images/screenshots/normal/") + C.id + ".jpg"
+                h.href = (C.wowhead==1 ? "http://static.wowhead.com/uploads/screenshots/normal/" + C.id + ".jpg" : "images/screenshots/normal/" + C.body.replace("gif","jpg").replace("png","jpg"));
             }
             if (!C.user && typeof g_pageInfo == "object") {
                 C.user = g_pageInfo.username
