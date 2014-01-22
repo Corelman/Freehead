@@ -43,6 +43,8 @@
 							{if isset($item.key)}<li><div>{#Can_be_placed_in_the_keyring#}</div></li>{/if}
 							<li><div>{#Added_in_patch#} {if $item.WDBVerified == 5875}1.12.1{elseif $item.WDBVerified == 6005}1.12.2{elseif $item.WDBVerified == 8606}2.4.3{elseif $item.WDBVerified == 9947}3.1.3{elseif $item.WDBVerified == 10146}3.2.0{elseif $item.WDBVerified == 10505}3.2.2a{elseif $item.WDBVerified == 10571}3.3.0{elseif $item.WDBVerified == 11159}3.3.0a{elseif $item.WDBVerified == 11403}3.3.2{elseif $item.WDBVerified == 11623}3.3.3{elseif $item.WDBVerified == 11723}3.3.3a{elseif $item.WDBVerified == 12340}3.3.5a{/if} </div></li>
 						</ul>
+						<tr><th id="infobox-">{#Screenshots_tab#}</th></tr>
+<tr><td><div class="infobox-spacer"></div><center><div id="infobox-sticky-ss"></div></center></td></tr>
 					</td></tr>
 				</table>
 
@@ -153,6 +155,7 @@ var tabsRelated = new Tabs({ldelim}parent: ge('tabs-generic'){rdelim});
 new Listview({ldelim}template: 'comment', id: 'comments', name: LANG.tab_comments, tabs: tabsRelated, parent: 'listview-generic', data: lv_comments{rdelim});
 new Listview({ldelim}template: 'screenshot', id: 'screenshots', name: LANG.tab_screenshots, tabs: tabsRelated, parent: 'listview-generic', data: lv_screenshots{rdelim});
 tabsRelated.flush();
+ss_appendSticky();
 </script>
 
 

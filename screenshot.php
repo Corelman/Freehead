@@ -81,6 +81,14 @@ switch($_REQUEST['screenshot'])
 		//screenshotfile
 		redirect($url);
 		break;
+	case 'getwh':
+	//sleep(1);
+	require_once('includes/allscreenshots.php');
+	$ss = get_wowhead_screenshots(intval($_GET['type']), intval($_GET['typeid']), 'ajax');
+	$content = $ss['content'];
+	echo "wh_screenshots=[$content];lv_screenshots = lv_screenshots.concat(wh_screenshots);ge('tab-screenshots').innerHTML = \"\";ge('tab-screenshots').innerHTML = '<div id=\"lv-screenshots\"></div>';tabsRelated.setTabName(tabsRelated.tabs.length - 1, LANG.tab_screenshots + \" (\"+wh_screenshots.length+\")\"); try{new Listview({template:'screenshot',id:'screenshots', data: lv_screenshots});}catch(err){alert(err.message)};ge('infobox-sticky-ss').innerHTML = \"\";ss_appendSticky();if(tabsRelated.getSelectedTab() != tabsRelated.tabs.length - 1){ge('tab-screenshots').style.display = 'none'};";
+	//echo "wh_screenshots=[$content];lv_screenshots = lv_screenshots.concat(wh_screenshots);tabsRelated.setTabName(2, 'lol');ge('tab-screenshots').innerHTML = \"\";ge('tab-screenshots').innerHTML = \"\";ge('tab-screenshots').innerHTML = '<div id=\"lv-screenshots\"></div>'; try{new Listview({template:'screenshot',id:'screenshots', data: lv_screenshots});}catch(err){alert(err.message)};ge('tab-screenshots').style.display = 'none';";
+		break;
 	default:
 		redirect("/");
 		break;

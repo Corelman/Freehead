@@ -46,6 +46,9 @@ else
 	</div>
 </div>
 </div>
+<script defer="defer">{if $wh_ss.status == 'false'}
+	load_ss();
+{/if}</script>
 <!-- 2012 FreedomHead http://freedomcore.ru-->
 <!--[if lte IE 6]></td><th class="ie6layout-th"></th></tr></table><![endif]-->
 </body>

@@ -736,6 +736,8 @@ $smarty->assign('page', $page);
 // Комментарии
 $smarty->assign('comments', getcomments($page['type'], $page['typeid']));
 $smarty->assign('screenshots', getscreenshots($page['type'], $page['typeid']));
+$smarty->assign('wh_ss', get_wowhead_screenshots($page['type'], $page['typeid'], 'page'));
+
 if($_GET['error']==2){
 $smarty->assign('screenshot_error', $smarty->get_config_vars('Error2'));
 };

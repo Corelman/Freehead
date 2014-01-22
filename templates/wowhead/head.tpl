@@ -48,7 +48,7 @@
 {if $page.maps}
 	<script src="templates/wowhead/js/maps.js?{$AOWOW_REVISION}" type="text/javascript"></script>
 {/if}
-
+<script src="templates/wowhead/js/screenshots.js?{$AOWOW_REVISION}" type="text/javascript"></script>
 	<script type="text/javascript">
 		var g_serverTime = new Date('{$smarty.now|date_format:"%Y/%m/%d %H:%M:%S"}');
 		g_locale = {ldelim} id: {$locale}, name: '{$language}' {rdelim};

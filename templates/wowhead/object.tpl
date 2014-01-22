@@ -12,7 +12,7 @@
 				g_initPath({$page.path});
 			</script>
 
-{if isset($object.key) or isset($object.lockpicking) or isset($object.mining) or isset($object.herbalism)}
+{if isset($object.key) or isset($object.lockpicking) or isset($object.mining) or isset($object.herbalism) or isset($wh_ss)}
 			<table class="infobox">
 				<tr><th>{#Quick_Facts#}</th></tr>
 				<tr><td><div class="infobox-spacer"></div>
@@ -23,7 +23,8 @@
 					{if isset($object.herbalism)}<li><div>{#Herb#} (<span class="tip" onmouseover="Tooltip.showAtCursor(event, '{#Required_herb_skill#}', 0, 0, 'q')" onmousemove="Tooltip.cursorUpdate(event)" onmouseout="Tooltip.hide()">{$object.herbalism}</span>)</div></li>{/if}
 				</ul>
 				</td></tr>
-				<tr><td><div class="infobox-spacer"></div><div id="infobox-sticky-ss"><center><img src="/images/screenshots/thumb/{if $obj.sscreen == NULL}noscreen{$locale}.png{else}{$obj.sscreen}{/if}"></center></div></td></tr>
+				<tr><th id="infobox-">{#Screenshots_tab#}</th></tr>
+<tr><td><div class="infobox-spacer"></div><center><div id="infobox-sticky-ss"></div></center></td></tr>
 			</table>
 {/if}
 
@@ -116,6 +117,7 @@ var tabsRelated = new Tabs({ldelim}parent: ge('tabs-generic'){rdelim});
 new Listview({ldelim}template: 'comment', id: 'comments', name: LANG.tab_comments, tabs: tabsRelated, parent: 'listview-generic', data: lv_comments{rdelim});
 new Listview({ldelim}template: 'screenshot', id: 'screenshots', name: LANG.tab_screenshots, tabs: tabsRelated, parent: 'listview-generic', data: lv_screenshots{rdelim});
 tabsRelated.flush();
+ss_appendSticky();
 </script>
 
 {include file='bricks/contribute.tpl'}

@@ -51,7 +51,7 @@
 						<li><div>{#Armor#}: {$npc.armor}</div></li>
 {/if} 
 <tr><th id="infobox-">{#Screenshots_tab#}</th></tr>
-<tr><td><div class="infobox-spacer"></div><div id="infobox-sticky-ss"><center><img src="/images/screenshots/thumb/{if $npc.sscreen == NULL}noscreen{$locale}.png{else}{$npc.sscreen}{/if}"></center></div></td></tr>
+<tr><td><div class="infobox-spacer"></div><center><div id="infobox-sticky-ss"></div></center></td></tr>
 					</ul>
 				</td></tr>
 			</table>
@@ -216,6 +216,7 @@ var tabsRelated = new Tabs({ldelim}parent: ge('tabs-generic'){rdelim});
 new Listview({ldelim}template: 'comment', id: 'comments', name: LANG.tab_comments, tabs: tabsRelated, parent: 'listview-generic', data: lv_comments{rdelim});
 new Listview({ldelim}template: 'screenshot', id: 'screenshots', name: LANG.tab_screenshots, tabs: tabsRelated, parent: 'listview-generic', data: lv_screenshots{rdelim});
 tabsRelated.flush();
+ss_appendSticky();
 </script>
 
 			{include file='bricks/contribute.tpl'}
